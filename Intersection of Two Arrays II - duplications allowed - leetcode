@@ -1,6 +1,6 @@
 class Solution {
     public int[] intersect(int[] arr1, int[] arr2) {
-        int n = 0;
+        int n = 0; //inc for array
         Map<Integer,Integer> map = new HashMap<Integer,Integer>();
          ArrayList<Integer> finalList = new ArrayList<Integer>();
         for(int k:arr1){
