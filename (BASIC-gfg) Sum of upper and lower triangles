@@ -1,0 +1,21 @@
+class Solution
+{
+    //Function to return sum of upper and lower triangles of a matrix.
+    static ArrayList<Integer> sumTriangles(int matrix[][], int n)
+    {
+        // code here
+        ArrayList<Integer> valList = new ArrayList<Integer>();
+        int sum1 = 0,sum2=0, diaSum = 0;
+        for(int i=0;i<matrix.length;i++){
+            for(int j=i+1;j<matrix.length;j++){
+                sum1 = sum1 + matrix[i][j]; //sum of upper edges
+                sum2 = sum2 + matrix[j][i]; //sum of lower edges
+            }
+            diaSum = diaSum + matrix[i][i]; //sum of diagonal
+        }
+        
+         valList.add(sum1+diaSum);
+         valList.add(sum2+diaSum);
+         return valList;
+    }
+}
