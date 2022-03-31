@@ -1,0 +1,19 @@
+//Function to reverse the columns of a matrix.
+    static void reverseCol(int matrix[][])
+    {
+        // code here 
+        int[][] mat = new int[matrix.length][matrix[0].length];
+        int ind = 0;
+        for(int j=0;j<matrix.length;j++){
+        for(int i=matrix[0].length-1;i>=0;i--)
+        {
+            mat[j][ind] = matrix[j][i];
+            ind++; //index for new matrix
+        }
+        ind=0;
+        }
+         for(int j=0;j<matrix.length;j++){
+              for(int i=0;i<matrix[0].length;i++){
+                  matrix[j][i] = mat[j][i];
+         }}
+    }
