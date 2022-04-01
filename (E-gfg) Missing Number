@@ -1,0 +1,32 @@
+using formula -->
+int sum = 0;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+        }
+        return ((n*(n+1))/2) - sum;
+        
+        
+       ===========================================================
+       my first attempt -->
+       
+        class Solution {
+        public int missingNumber(int[] nums) {
+        if(nums.length==1){
+            return  nums[0]>=1? 0 : 1; //if length equals 1
+        }
+        int result = 0;
+        Arrays.sort(nums);
+        for(int i = 0;i<nums.length;i++){
+           if(i!=nums[i]){
+               result = i;
+               break;
+           }
+        }
+        if(nums[0]==0){
+             result = result==0?nums.length:result;
+        }
+        return result;
+       
+    }
+}
