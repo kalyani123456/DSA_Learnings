@@ -1,0 +1,10 @@
+class Solution {
+public ListNode middleNode(ListNode head) {
+ListNode fast = head, slow = head; //init with head
+while(fast!=null && fast.next!=null){
+fast = fast.next.next; //move fast with 2x speed than slow
+slow = slow.next; // 1x speed
+}
+return slow; //return middle
+}
+}
