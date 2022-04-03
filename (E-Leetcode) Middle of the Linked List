@@ -8,3 +8,4 @@ slow = slow.next; // 1x speed
 return slow; //return middle
 }
 }
+
