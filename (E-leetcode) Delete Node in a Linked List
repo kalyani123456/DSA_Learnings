@@ -1,0 +1,7 @@
+*It is guaranteed that the node to be deleted is not a tail node in the list.*
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val; //copy the next node value to curr
+        node.next = node.next.next; // delete the node
+    }
+}
