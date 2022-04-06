@@ -1,0 +1,10 @@
+class Solution {
+public int getDecimalValue(ListNode curr) {
+String res = "";
+while(curr!=null){
+res = res + "" + curr.val; //save all nodes data to res
+curr = curr.next;
+}
+return Integer.parseInt(res,2); //convert binary string to decimal
+}
+}
