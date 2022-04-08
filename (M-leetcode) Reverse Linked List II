@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(head==null || (left==right)){return head;} //corner cases
+        ListNode curr = new ListNode(0);
+        curr.next = head;
+        ListNode before = curr, //node before the left 
+		working = null , //starting node of reverse list
+		extract = null; //node to be extracted and to be attach before working node 
+        int pos = 1;
+        while(pos<left){
+            before = before.next; // get the first node between left to right
+            pos++;
+        }
+        working = before.next; 
+        while(left<right){
+            extract = working.next; //target 2nd node of working node to extract
+            working.next = extract.next; //detach extract node from list
+            extract.next = before.next; //make before next to extract next
+            before.next = extract; //attach extract to next of before 
+            left++;
+        }
+        
+        return curr.next; //head
+    }
+        
+}
