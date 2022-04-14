@@ -1,0 +1,33 @@
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        ListNode evStart=null, //to keep even list head
+        evEnd=null, //to keep end of even list
+        odStart=null,odEnd=null;
+        int x=1;
+        for(ListNode curr=head;curr!=null;curr=curr.next){
+            if(x%2==0){ //to perform action on alternate even , odd nodes.
+                if(evStart==null){ 
+                    evStart=curr; //save the head of even list
+                    evEnd=evStart; //add first element to end list
+                }else{
+                    evEnd.next=curr; //add next even elemnt
+                    evEnd=evEnd.next; //move to next
+                }
+            }else{
+                if(odStart==null){
+                    odStart=curr;
+                    odEnd=odStart;
+                }else{
+                    odEnd.next=curr;
+                    odEnd=odEnd.next;
+                     }
+            }
+            x++;
+        }
+        if(odStart==null||evStart==null)
+            return head; //means no even element or no odd element or main list is null
+        odEnd.next=evStart; //attach even list head to odd list end
+        evEnd.next=null; //set even end to null
+        return odStart; //return new head
+    }
+}
