@@ -1,0 +1,27 @@
+Valid Parenclass Solution {
+    public boolean isValid(String x) {
+       // add your code here
+        Deque<Character> s = new ArrayDeque<>(); //stack LIFO
+        for(int i=0;i<x.length();i++){
+            char c = x.charAt(i);
+            if(c=='(' || c=='[' || c=='{'){ //add to stack if its opening
+                s.push(c);
+            }
+            else{
+                if(s.isEmpty()==true){ //if stack is empty
+                    return false;
+                }
+                else if(matching(s.peek(),c)==false){ //if open do not match with close
+                    return false;
+                }
+                else{s.pop();} // if matches open == close the pop 
+            }
+        }
+        return (s.isEmpty()==true);
+    }
+    
+    static boolean matching(char a,char b){
+        return ((a=='(' && b==')') ||
+        (a=='{' && b=='}') || (a=='[' && b==']'));
+    }
+}theses
