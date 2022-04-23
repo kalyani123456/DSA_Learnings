@@ -1,0 +1,17 @@
+class Solution {
+    public int maxDepth(String str) {
+        int open = 0, max=0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)=='(')
+            {
+                open++; //count open brackets
+            }
+            else if(str.charAt(i)==')')
+            {
+               open--; //remove open when close brackets found
+            }
+        max = Math.max(open,max); //save max of each iteration.
+        }
+       return max; 
+    }
+}
