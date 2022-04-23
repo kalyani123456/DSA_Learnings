@@ -13,5 +13,6 @@ class Solution {
         max = Math.max(open,max); //save max of each iteration.
         }
        return max; 
+       
     }
 }
