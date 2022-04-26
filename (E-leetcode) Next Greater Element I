@@ -1,0 +1,24 @@
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        Stack<Integer> s = new Stack<>();
+        int[] saveAll = new int[nums2.length];
+        for(int i=nums2.length-1;i>=0;i--){ //get greater values for all nums2
+            while(!s.empty() && s.peek()<=nums2[i]){s.pop();}
+            saveAll[i] = s.empty()?-1:s.peek();
+            s.push(nums2[i]);
+        }
+        //create key values pair for number to its greater value
+        HashMap<Integer,Integer> hash = new HashMap<>();
+        for(int i=0;i<nums2.length;i++){
+            hash.put(nums2[i],saveAll[i]); //number , greater
+        }
+        
+        int[] ans = new int[nums1.length];
+         for(int i=0;i<nums1.length;i++){
+            ans[i] = hash.get(nums1[i]); //retrieve only those present in nums1
+        }
+        return ans;
+        
+    }
+    
+}
