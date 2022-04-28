@@ -1,0 +1,27 @@
+class Solution {
+public int countStudents(int[] students, int[] sandwiches) {
+ArrayList stud = new ArrayList();
+ArrayList sand = new ArrayList<>();
+for(int i=0;i<students.length;i++){
+stud.add(students[i]);
+}
+for(int i=0;i<sandwiches.length;i++){
+sand.add(sandwiches[i]);
+}
+int c=0,i=0;
+while(stud.size()!=0) {
+if(stud.get(i)==sand.get(i)){
+c =0;
+stud.remove(i);sand.remove(i);
+}
+else{
+c++;
+int val = stud.get(i);
+stud.remove(i);
+stud.add(val);
+}
+if(c==stud.size()){break;} //to break the infinite loop. (condition when rearrangment didnt give students the sandwich they wanted)
+}
+return c;
+}
+}
