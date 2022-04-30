@@ -1,0 +1,18 @@
+class Solution {
+public String makeGood(String s) {
+Stack stack = new Stack<>();
+String str = "";
+for(int i=0;i<s.length();i++){
+char c = s.charAt(i);
+if(!stack.empty() && Math.abs(stack.peek()-c)==32){ //diff in cap and its small is 32
+stack.pop();
+str = str.substring(0,str.length() - 1); //remove last from res string
+}
+else{
+stack.push(c);
+str = str + c;
+}
+}
+return str;
+}
+}
