@@ -1,0 +1,20 @@
+class Solution {
+    public String simplifyPath(String s) {
+        Stack<String> stack = new Stack<>();
+        String[] arr = s.split("/+"); //to handle multiple "///" 
+        for(int i=0;i<arr.length;i++){
+            if(!stack.empty() && arr[i].equals("..")){ //delete previos directory
+                stack.pop();
+            }
+            else if(!arr[i].equals("..") && !arr[i].equals(".") && !arr[i].equals("")){
+                stack.push(arr[i]);
+            }
+        }
+        StringBuilder str = new StringBuilder();
+        for(String iter: stack){
+            str.append("/").append(iter);
+        }
+        
+        return str.length()==0?"/":str.toString();
+    }
+}
