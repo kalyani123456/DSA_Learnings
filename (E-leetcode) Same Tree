@@ -1,0 +1,14 @@
+ public boolean isSameTree(TreeNode p, TreeNode q) { //used the recursion
+        if(p==null && q==null){ //if both completed travelsel and come to end null
+            return true;
+        }
+        else if(p==null || q==null){ //if one of them is null
+            return false;
+        }
+        else if(p.val!=q.val){ // values
+            return false;
+        }
+        else{
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);//to check of both left and right of two nodes are same
+        }
+    }
