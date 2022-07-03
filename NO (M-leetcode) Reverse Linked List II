@@ -19,7 +19,7 @@ class Solution {
             before.next = extract; //attach extract to next of before 
             left++;
         }
-        return curr.next; //head
+      return curr.next; //head
     }
         
 }
