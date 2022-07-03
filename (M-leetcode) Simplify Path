@@ -14,7 +14,6 @@ class Solution {
         for(String iter: stack){
             str.append("/").append(iter);
         }
-        
-        return str.length()==0?"/":str.toString();
+         return str.length()==0?"/":str.toString();
     }
 }
