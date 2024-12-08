@@ -1,0 +1,11 @@
+public void moveZeroes(int[] nums) {
+        int resIndx = 0; //keep count of non zero numbers
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){ //add non zeros to left
+                int temp = nums[i];
+                nums[i] = nums[resIndx];
+                nums[resIndx] = temp;
+                resIndx++; //increment to place next non zero
+            }
+        }
+    }
