@@ -1,1 +1,48 @@
+small solution :
+
+class Solution {
+    // Function to remove duplicates from the given array
+    public int removeDuplicates(int[] arr) {
+        if(arr.length == 0) {return 0;}
+        int resIndx = 1;
+        for(int i=1;i<arr.length;i++){
+            if(arr[resIndx-1] != arr[i]){
+                arr[resIndx] = arr[i];
+                resIndx++;
+            }    
+        }
+        return resIndx;
+    }
+}
+
+
+
+my approcach : Very lengthyyyyy .....
+class Solution {
+    // Function to remove duplicates from the given array
+    public int removeDuplicates(int[] arr) {
+        if(arr.length == 0) {return 0;}
+        int curr = arr[0];
+        int currIndx = 0;
+        for(int i=1;i<arr.length;i++){
+            if(curr == arr[i]){
+                arr[i] = -1;
+            }
+            else{
+                curr = arr[i];
+                currIndx = currIndx + 1;
+                int temp = arr[currIndx];
+                arr[currIndx] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        int resultLen = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] != -1){
+                resultLen = resultLen + 1;
+            }
+        }
+        return resultLen;
+    }
+}
 
