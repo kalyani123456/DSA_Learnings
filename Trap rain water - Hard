@@ -1,0 +1,73 @@
+Input: height = [0,1,0,2,1,0,3,2,1,2,1]
+Output: 5
+
+            0
+      0     0 0   0
+  0   0 0   0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0
+
+On left and right we will not trap any water
+if the array is sorted like this then water cannot be stored.
+    0   0
+  0 0   0 0
+0 0 0   0 0 0
+
+we need to ignore 0 and n-1
+first calculate highest on left and right of any index
+
+for index 1 -> highest at left itslef and on right is 3
+so take min of 1 and 3 i,e 1 and minus the height of block i.e -> 1-1 -> 0
+
+for index 2 i.e 0
+left max is 1 and right is 3
+min is 1 and minus block size 0 1-0 -> 1
+
+go on ---
+0 + 1 + 0 + 1 + 2 + 1 => 5
+
+O ( n * n)
+
+optimal is to keep array of left highest and right highest till now
+
+for tranverse from left to right and calculate array
+[0,1,0,2,1,3,2,1,2,1]
+
+[1,1,1,2,2,3,3,3,3,3]
+
+right to left
+
+[3,3,3,3,3,3,3,2,2,2]
+
+
+min of 1,3 -> 1 - 1 -> 0
+min of 1,3 -> 1 - 0 -> 1
+min of 2,3 -> 2 - 2 -> 0
+min of 2,3 -> 2 - 1 -> 1
+min of 3,3 -> 3 - 3 -> 0
+min of 3,3 -> 3 - 2 -> 1
+min of 3,2 -> 2 - 1 -> 1
+min of 3,2 -> 2 - 2 -> 0
+min of 3,2 -> 2 - 1 -> 1
+
+res = 5
+
+class Solution {
+    public int trap(int[] height) {
+     int n = height.length;   
+     int[] lmax = new int[n];
+     int[] rmax = new int[n];
+     lmax[0] = height[0];
+     int result = 0;
+     for(int i = 1; i<n;i++){
+         lmax[i] = Math.max(lmax[i-1], height[i]);
+     }
+     rmax[n-1] = height[n-1];
+     for(int i = n-2; i>=0 ;i--){
+         rmax[i] = Math.max(height[i], rmax[i+1]);
+     }
+     for(int i = 1; i<n-1 ; i++){
+       result = result + (Math.min(lmax[i],rmax[i]) - height[i]);
+     }
+     return result;
+    }
+}
